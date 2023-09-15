@@ -116,9 +116,11 @@ plot(roc_obj, main="ROC Curve for Logistic Regression", print.auc=TRUE)
 
 **ON BASED ON THE DATA TRAINING WE FOUND THAT THE PATIENT HAS DIABETES**
 
-##_--------------------------------------------------------------------------------------------
-## RANDOM FOREST HYPERPARAMETRE TUNING(THIS STEP IS NOT REQUIRED FOR THIS MODEL AS 
-#WE GOT THE GOOD AUC SCORE ALREADY)
+##_------------------------------------------------------------------------------------------------------------------------------
+
+
+RANDOM FOREST HYPERPARAMETRE TUNING(THIS STEP IS NOT REQUIRED FOR THIS MODEL AS WE GOT THE GOOD AUC SCORE ALREADY)
+```
 param = list(
   interaction.depth = c(1:7),
   n.trees = c(50, 100, 200, 500, 700),
@@ -189,5 +191,6 @@ rg.gbm.final=randomForest(Outcome~.,
 test.score=predict(rg.gbm.final,newdata=train,type='response',
                    n.trees = best_params$n.trees)
 pROC::auc(pROC::roc(train$Outcome,test.score))
+```
 
 
